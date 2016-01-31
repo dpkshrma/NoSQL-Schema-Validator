@@ -1,0 +1,14 @@
+{
+  "name": "NSV Demo",
+  "version": "1.0.0",
+  "description": "Validates NoSQL database objects(docs) against specified schema",
+  "main": "index.js",
+  "dependencies": {
+    "nedb": "^1.7.2",
+    "sprintf": "^0.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "author": "Deepak Sharma <dpkshrma01@gmail.com",
+  "license": "MIT"
+}
