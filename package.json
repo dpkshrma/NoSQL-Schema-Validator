@@ -1,16 +1,13 @@
 {
-  "name": "nodejs_class_inheritance",
+  "name": "NoSQL Schema Validator",
   "version": "1.0.0",
-  "description": "",
+  "description": "Validates NoSQL database objects(docs) against specified schema",
   "main": "index.js",
   "dependencies": {
-    "nedb": "^1.7.2",
     "sprintf": "^0.1.5"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+  "scripts": {},
+  "author": "Deepak Sharma <dpkshrma01@gmail.com",
+  "license": "MIT"
 }
