@@ -7,13 +7,17 @@ var dt_err   = "Invalid datatype for property: %s\n Required: %s\n Found: %s\n";
 var obj_err  = "Invalid Object for property: %s\n";
 
 function model(schema, data){
+    Object.defineProperty(this, "schema", {
+        enumerable: false,
+        value: schema
+    });
     var model_obj = this;
-    validate_data(schema, data, function(prop){
+    validate_object(schema, data, function(prop){
         model_obj[prop] = data[prop];
     });
 }
 
-function validate_data(schema, data, callback){
+function validate_object(schema, data, callback){
     if (Object.keys(schema).length !== Object.keys(data).length)
         throw new Error("Invalid object length");
 
@@ -39,14 +43,13 @@ function validate_data(schema, data, callback){
 
 }
 
-
 function check_object(data_item, schema_item){
     var data_ctor = data_item.constructor,
         sch_ctor = schema_item.constructor;
 
     if (data_ctor === sch_ctor){
         if (sch_ctor === Object){
-            validate_data(schema_item, data_item);
+            validate_object(schema_item, data_item);
         }
         else if (sch_ctor === Array){
             schema_item = schema_item[0];
@@ -57,7 +60,7 @@ function check_object(data_item, schema_item){
 
             for (var i = 0; i < data_item.length; i++) {
                 if (arr_child_is_object) {
-                    validate_data(schema_item, data_item[i]);
+                    validate_object(schema_item, data_item[i]);
                 }
                 else{
                     if(Object.keys(schema_item).length >1)
@@ -74,6 +77,19 @@ function check_object(data_item, schema_item){
         var err = sprintf(obj_err, prop);
         throw new Error(err);
     }
+}
+
+model.prototype.get = function(prop){
+    if (typeof prop === 'undefined')
+        return this;
+    if (typeof this.schema[prop] === 'undefined'){
+        throw new Error("Invalid Property");
+    }
+    return this[prop];
+}
+
+model.prototype.get_schema = function(){
+    return this.schema;
 }
 
 module.exports = model;
