@@ -2,12 +2,20 @@
 
 A simple JSON schema validator that can be used for NoSQL DBs on NodeJS.
 
+## Installation
+
+Using npm:
+
+```
+npm install nosql-schema-validator --save
+```
+
 ## Defining your Schema
 
 ```javascript
 // JSON Schema Document (person.js)
 
-var Model = require('./model');
+var Model = require('nosql-schema-validator');
 var schema = {
   name     : String,
   favFruits: [
