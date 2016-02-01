@@ -1,13 +1,43 @@
 {
   "name": "NoSQL Schema Validator",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=0.10.21"
+  },
+  "author": {
+    "name": "Deepak Sharma"
+  },
+  "directories": {
+    "lib": "."
+  },
   "description": "Validates NoSQL database objects(docs) against specified schema",
-  "main": "index.js",
+  "main": "./model",
+  "homepage": "https://github.com/dpkshrma/NoSQL-Schema-Validator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dpkshrma/NoSQL-Schema-Validator"
+  },
   "dependencies": {
     "sprintf": "^0.1.5"
   },
   "devDependencies": {},
   "scripts": {},
-  "author": "Deepak Sharma <dpkshrma01@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dpkshrma/NoSQL-Schema-Validator/issues"
+  },
+  "_id": "NoSQL-Schema-Validator@1.0.0",
+  "_from": "NoSQL-Schema-Validator@*",
+  "_npmVersion": "4.2.6",
+  "_nodeVersion": "2.14.12",
+  "_npmUser": {
+    "name": "deepak.sharma",
+    "email": "dpkshrma01@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "Deepak Sharma",
+      "email": "dpkshrma01@gmail.com"
+    }
+  ]
 }
