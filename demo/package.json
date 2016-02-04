@@ -1,5 +1,5 @@
 {
-  "name": "NSV Demo",
+  "name": "demo",
   "version": "1.0.0",
   "description": "Validates NoSQL database objects(docs) against specified schema",
   "main": "index.js",

@@ -45,7 +45,7 @@ function validate_object(schema, data, callback){
         }
 
         if (schema_item_type === 'object'){
-            check_object(data[prop], schema[prop]);
+            check_object(data[prop], schema[prop], prop);
         }
         else if(data[prop].constructor !== schema[prop]){
             var err = sprintf(dt_err, prop, schema[prop].name, data[prop].constructor.name);
@@ -66,9 +66,9 @@ function validate_object(schema, data, callback){
  * @param  {object} schema_item schema property value
  * @return {none}               none
  */
-function check_object(data_item, schema_item){
-    var data_ctor = data_item.constructor,
-        sch_ctor = schema_item.constructor;
+function check_object(data_item, schema_item, prop){
+    var data_ctor = data_item.constructor.name,
+        sch_ctor = schema_item.constructor.name;
 
     if (data_ctor === sch_ctor){
         if (sch_ctor === Object){
