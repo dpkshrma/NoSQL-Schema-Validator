@@ -47,7 +47,7 @@ function validate_object(schema, data, callback){
         if (schema_item_type === 'object'){
             check_object(data[prop], schema[prop], prop);
         }
-        else if(data[prop].constructor !== schema[prop]){
+        else if(data[prop].constructor.name !== schema[prop].name){
             var err = sprintf(dt_err, prop, schema[prop].name, data[prop].constructor.name);
             throw new Error(err);
         }
@@ -93,7 +93,7 @@ function check_object(data_item, schema_item, prop){
                 else{
                     if(Object.keys(schema_item).length >1)
                         throw new Error(obg_len_err);
-                    if(schema_item['type'] !== data_item[i].constructor){
+                    if(schema_item['type'].name !== data_item[i].constructor.name){
                         var err = sprintf(dt_err, prop, schema_item[prop].name, data_item[prop].constructor.name);
                         throw new Error(err);
                     }
