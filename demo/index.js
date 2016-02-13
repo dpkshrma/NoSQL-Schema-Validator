@@ -8,8 +8,8 @@ var person = new Person({
     },
     age: {
         biological: 20
-    },
-    fruits: [{name: 'Apple', fav: false, about:['fresh']}, {name: 'Mango', fav: true, about:['ripe']}, {name: 'Banana', fav: true, about:['energy']}]
+    }
+//    fruits: [{name: 'Apple', fav: false, about:['fresh']}, {name: 'Mango', fav: true, about:['ripe']}, {name: 'Banana', fav: true, about:['energy']}]
 });
 
 console.log("\nInserting person into nedb...")

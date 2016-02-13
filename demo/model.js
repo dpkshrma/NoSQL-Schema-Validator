@@ -33,9 +33,6 @@ function Model(schema, data){
  * @return {none}              none
  */
 function validate_object(schema, data, callback){
-    if (Object.keys(schema).length !== Object.keys(data).length)
-        throw new Error(obg_len_err);
-
     for(var prop in data){
         if (prop in schema)
             var schema_item_type = typeof schema[prop];
@@ -45,9 +42,9 @@ function validate_object(schema, data, callback){
         }
 
         if (schema_item_type === 'object'){
-            check_object(data[prop], schema[prop]);
+            check_object(data[prop], schema[prop], prop);
         }
-        else if(data[prop].constructor !== schema[prop]){
+        else if(data[prop].constructor.name !== schema[prop].name){
             var err = sprintf(dt_err, prop, schema[prop].name, data[prop].constructor.name);
             throw new Error(err);
         }
@@ -66,9 +63,9 @@ function validate_object(schema, data, callback){
  * @param  {object} schema_item schema property value
  * @return {none}               none
  */
-function check_object(data_item, schema_item){
-    var data_ctor = data_item.constructor,
-        sch_ctor = schema_item.constructor;
+function check_object(data_item, schema_item, prop){
+    var data_ctor = data_item.constructor.name,
+        sch_ctor = schema_item.constructor.name;
 
     if (data_ctor === sch_ctor){
         if (sch_ctor === Object){
@@ -92,8 +89,8 @@ function check_object(data_item, schema_item){
                 }
                 else{
                     if(Object.keys(schema_item).length >1)
-                        throw new Error(obg_len_err);
-                    if(schema_item['type'] !== data_item[i].constructor){
+                        throw new Error(obj_len_err);
+                    if(schema_item['type'].name !== data_item[i].constructor.name){
                         var err = sprintf(dt_err, prop, schema_item[prop].name, data_item[prop].constructor.name);
                         throw new Error(err);
                     }

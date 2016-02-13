@@ -33,9 +33,6 @@ function Model(schema, data){
  * @return {none}              none
  */
 function validate_object(schema, data, callback){
-    if (Object.keys(schema).length !== Object.keys(data).length)
-        throw new Error(obg_len_err);
-
     for(var prop in data){
         if (prop in schema)
             var schema_item_type = typeof schema[prop];
@@ -92,7 +89,7 @@ function check_object(data_item, schema_item, prop){
                 }
                 else{
                     if(Object.keys(schema_item).length >1)
-                        throw new Error(obg_len_err);
+                        throw new Error(obj_len_err);
                     if(schema_item['type'].name !== data_item[i].constructor.name){
                         var err = sprintf(dt_err, prop, schema_item[prop].name, data_item[prop].constructor.name);
                         throw new Error(err);
